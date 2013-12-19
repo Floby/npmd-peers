@@ -1,0 +1,35 @@
+{
+  "name": "npmd-peers",
+  "version": "0.0.0",
+  "description": "find other people running npmd",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "uuid": "~1.4.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.15.1",
+    "istanbul": "~0.2.1"
+  },
+  "scripts": {
+    "test": "istanbul cover --print detail _mocha -- -R list test/test*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Floby/npmd-peers.git"
+  },
+  "keywords": [
+    "npmd",
+    "npm",
+    "peer2peer",
+    "p2p"
+  ],
+  "author": "Florent Jaby <florent.jaby@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Floby/npmd-peers/issues"
+  },
+  "homepage": "https://github.com/Floby/npmd-peers"
+}
