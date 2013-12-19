@@ -9,4 +9,10 @@ describe("one node's id", function () {
       done();
     });
   });
+  it('should use the semver provided in the options', function (done) {
+     peers({version: '1.0.1'}, function (p) {
+      expect(p.id).to.match(/^npmd:1.0.1:[a-f0-9]+(-[a-f0-9]+)+$/);
+      done();
+    });
+  });
 });
