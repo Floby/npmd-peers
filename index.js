@@ -1,6 +1,7 @@
-var uuid = require('uuid');
+var EventEmitter = require('events').EventEmitter;
 var package = require('./package');
-
+var uuid = require('uuid');
+var polo = require('polo');
 
 module.exports = Peers
 
@@ -11,7 +12,16 @@ function Peers (options, onReady) {
   }
   options = options || {};
   var version = options.version || package.version;
-  onReady({
-    id: 'npmd:' + version + ':' + uuid.v4()
-  });
+
+  var peers = {};
+
+  emitter = new EventEmitter();
+  emitter.id = 'npmd:' + version + ':' + uuid.v4();
+  emitter.get = function (id) {
+    return peers[id];
+  }
+
+  emitter.once('ready', onReady);
+  emitter.emit('ready', emitter);
+  return emitter;
 }
