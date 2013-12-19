@@ -43,7 +43,7 @@ type of error.
 each node, if it hasn't one already, generates a unique ID which is a string
 following this format :
 
-`npmd-{npmd-peers version}-{uuid-v4}`
+`npmd:{npmd-peers version}:{uuid-v4}`
 
 
 ## license
