@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 
 var peers = require('../');
 
-describe('two nodes', function () {
+describe('two nodes on the same local network', function () {
   var p1;
   var p2;
 
@@ -23,7 +23,7 @@ describe('two nodes', function () {
         expect(p1.get(p2.id)).to.be.ok;
         expect(p2.get(p1.id)).to.be.ok;
         done();
-      }, 100);
+      }, 20);
     }, done);
   });
 })

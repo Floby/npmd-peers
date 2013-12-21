@@ -21,6 +21,17 @@ function Peers (options, onReady) {
     return peers[id];
   }
 
+  var npmds = polo({monitor:true});
+  npmds.put({
+    name: emitter.id,
+    port: 8989
+  });
+
+  npmds.on('up', function(name, service) {
+    peers[name] = service;
+  });
+
+
   emitter.once('ready', onReady);
   emitter.emit('ready', emitter);
   return emitter;
