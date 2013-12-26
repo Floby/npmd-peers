@@ -5,11 +5,13 @@ var publicAddress = require('public-address');
 
 var peers = require('../');
 
-return;
 describe('two nodes on the internet', function () {
   var p1;
   var p2;
   var publicIp;
+  var options = {
+    discovery: ['tracker']
+  }
 
   before(function (done) {
     publicAddress(function (err, data) {
@@ -20,9 +22,9 @@ describe('two nodes on the internet', function () {
   })
 
   beforeEach(function (done) {
-    peers(function (p) {
+    peers(options, function (p) {
       p1 = p;
-      peers(function (p) {
+      peers(options, function (p) {
         p2 = p;
         done();
       })
@@ -34,6 +36,8 @@ describe('two nodes on the internet', function () {
     trycatch(function () {
       setTimeout(function () {
         expect(p2.get(p1.id)).to.be.ok;
+        var peer = p2.get(p1.id);
+        expect(peer.host).to.equal(publicIp);
         done();
       }, 2000);
     }, done);

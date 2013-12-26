@@ -7,11 +7,14 @@ var peers = require('../');
 describe('two nodes on the same local network', function () {
   var p1;
   var p2;
+  var options = {
+    discovery: ['local']
+  }
 
   beforeEach(function (done) {
-    peers(function (p) {
+    peers(options, function (p) {
       p1 = p;
-      peers(function (p) {
+      peers(options, function (p) {
         p2 = p;
         done();
       })
