@@ -10,7 +10,7 @@ describe('two nodes on the internet', function () {
   var p2;
   var publicIp;
   var options = {
-    discovery: ['tracker']
+    strategies: ['tracker']
   }
 
   before(function (done) {

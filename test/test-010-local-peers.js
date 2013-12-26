@@ -8,7 +8,7 @@ describe('two nodes on the same local network', function () {
   var p1;
   var p2;
   var options = {
-    discovery: ['local']
+    strategies: ['local']
   }
 
   beforeEach(function (done) {
