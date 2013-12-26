@@ -1,3 +1,4 @@
+var utils = require('./utils');
 var expect = require('chai').expect;
 var peers = require('../');
 var trycatch = require('trycatch');

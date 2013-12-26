@@ -1,12 +1,23 @@
 var utils = require('./utils');
 var trycatch = require('trycatch');
 var expect = require('chai').expect;
+var publicAddress = require('public-address');
 
 var peers = require('../');
 
-describe('two nodes on the same local network', function () {
+return;
+describe('two nodes on the internet', function () {
   var p1;
   var p2;
+  var publicIp;
+
+  before(function (done) {
+    publicAddress(function (err, data) {
+      if(err) return done(err)
+      publicIp = data.address;
+      done();
+    });
+  })
 
   beforeEach(function (done) {
     peers(function (p) {
@@ -19,12 +30,13 @@ describe('two nodes on the same local network', function () {
   });
 
   it('should find each other', function (done) {
+    this.timeout(4000);
     trycatch(function () {
       setTimeout(function () {
-        expect(p1.get(p2.id)).to.be.ok;
         expect(p2.get(p1.id)).to.be.ok;
         done();
-      }, 20);
+      }, 2000);
     }, done);
   });
 })
+
