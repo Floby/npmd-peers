@@ -18,7 +18,7 @@ These different strategies for discovering peers are the following:
 
 ``` js
 var npmdPeers = require('npmd-peers');
-var peers = npmdPeers(db.sublevel('peers'), {strategies: ['lpd']});
+var peers = npmdPeers(db.sublevel('peers'), {strategies: ['local', 'tracker']});
 peers.on('peer', function (peer) {
   peer.host // the host or ip address as a string
   peer.port // the port to connect to as a number
