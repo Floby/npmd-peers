@@ -28,6 +28,10 @@ function Peers (options, onReady) {
     return discovery.get(id);
   }
 
+  emitter.close = function (callback) {
+    discovery.close(callback);
+  }
+
   //var tracker = new Tracker('udp://tracker.openbittorrent.com:80/announce');
   //var clientId = (function () {var id = new Buffer(20); id.write('-npmd00-'); return id})();
   //var npmdFakeTorrent = {

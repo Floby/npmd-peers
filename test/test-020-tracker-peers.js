@@ -31,6 +31,12 @@ describe('two nodes on the internet', function () {
     })
   });
 
+  afterEach(function (done) {
+    p1.close(function (err) {
+      p2.close(done);
+    })
+  });
+
   it('should find each other', function (done) {
     this.timeout(4000);
     trycatch(function () {
